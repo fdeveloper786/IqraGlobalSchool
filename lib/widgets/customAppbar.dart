@@ -33,6 +33,7 @@ class CustomAppBar extends AppBar {
                 Variables.appTitle,
                 style: TextStyle(color: Colors.black,fontSize: 15,fontWeight: FontWeight.bold),
               ),
+              SizedBox(height: 05,),
               title,
             ],
           ),

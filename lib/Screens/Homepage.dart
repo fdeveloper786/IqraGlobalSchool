@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mountassissi_clone/authentication/changePassword.dart';
+import 'package:mountassissi_clone/authentication/forgetPassword.dart';
+import 'package:mountassissi_clone/authentication/login.dart';
 import 'package:mountassissi_clone/const/styles.dart';
 import 'package:mountassissi_clone/const/variables.dart';
 import 'package:mountassissi_clone/widgets/customAppbar.dart';
-
+import 'studentProfile.dart';
 import 'About.dart';
 
 
@@ -202,7 +205,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            SizedBox(height: 50,),
+            SizedBox(height: 20,),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
@@ -210,36 +213,44 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Explore',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                    SizedBox(height:40),
+                    SizedBox(height:20),
                     Row(
                       children: [
                         Expanded(
                             child: Column(
                               children: [
-                                Container(
-                                  //borderRadius: BorderRadius.circular(20.0),
-                                  child: Image.asset(
-                                    'assets/icons/house.png',
-                                    height: 50,
-                                    width: 50,
+                                InkWell(
+                                  child: Container(
+                                    //borderRadius: BorderRadius.circular(20.0),
+                                    child: Image.asset(
+                                      'assets/icons/house.png',
+                                      height: 50,
+                                      width: 50,
+                                    ),
                                   ),
+                                  onTap: (){
+                                    Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (context)=> Login()));
+                                  },
                                 ),
                                 SizedBox(height: 05,),
                                 Text('Home Work',style: Styles.textHomeStyle,),
                               ],
-                            )),
-
+                            )
+                        ),
                         Expanded(child: Column(
                           children: [
-                            Container(
-                              //borderRadius: BorderRadius.circular(20.0),
-                              child: Image.asset(
-                                'assets/icons/videoconference.png',
-                                height: 50,
-                                width: 50,
+                            InkWell(
+                              child: Container(
+                                child: Image.asset(
+                                  'assets/icons/videoconference.png',
+                                  height: 50,
+                                  width: 50,
+                                ),
                               ),
+                              onTap: (){
+                                Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (context)=> ForgotPassword()));
+                              },
                             ),
-
                             SizedBox(height: 05,),
                             Text('Online Class',style: Styles.textHomeStyle),
                           ],
@@ -485,8 +496,8 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Row(
                   children: [
-                    Expanded(
-                        child: Column(
+                    //School info
+                    Expanded(child: Column(
                           children: [
                             InkWell(
                               child: Container(
@@ -505,35 +516,46 @@ class _HomePageState extends State<HomePage> {
                             Text('School Profile',style: Styles.textHomeStyle,),
                           ],
                         )),
-
-                    Expanded(child: Column(
-                      children: [
-                        Container(
-                          //borderRadius: BorderRadius.circular(20.0),
-                          child: Image.asset(
-                            'assets/icons/profiles/man-user.png',
-                            height: 50,
-                            width: 50,
+                    //student profile
+                    Expanded(child: InkWell(
+                      child: Column(
+                        children: [
+                          Container(
+                            //borderRadius: BorderRadius.circular(20.0),
+                            child: Image.asset(
+                              'assets/icons/profiles/man-user.png',
+                              height: 50,
+                              width: 50,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 05,),
-                        Text('My Profile',style: Styles.textHomeStyle),
-                      ],
-                    )),
-
-                    Expanded(child: Column(
-                      children: [
-                        Container(
-                          //borderRadius: BorderRadius.circular(20.0),
-                          child: Image.asset(
-                            'assets/icons/profiles/password.png',
-                            height: 50,
-                            width: 50,
+                          SizedBox(height: 05,),
+                          Text('My Profile',style: Styles.textHomeStyle),
+                        ],
+                      ),
+                      onTap: (){
+                        debugPrint('pressed');
+                        Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (context)=> StudentsProfiles()));
+                      },
+                    ),),
+                    // change password
+                    Expanded(child: InkWell(
+                      child: Column(
+                        children: [
+                          Container(
+                            //borderRadius: BorderRadius.circular(20.0),
+                            child: Image.asset(
+                              'assets/icons/profiles/password.png',
+                              height: 50,
+                              width: 50,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 05,),
-                        Text('Change Password',style: Styles.textHomeStyle),
-                      ],
+                          SizedBox(height: 05,),
+                          Text('Change Password',style: Styles.textHomeStyle),
+                        ],
+                      ),
+                      onTap: (){
+                        Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (context)=> ChangePassword()));
+                      },
                     )),
                   ],
                 ),
